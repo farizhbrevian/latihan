@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Profile - John Doe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif; /* font yang digunakan */
+            line-height: 1.6; /* jarak kata */
+            color: #333; /* warna teks */
+            background: linear-gradient(135deg, #667eaa 0%, #764ba2 100%) ; /* warna bg biru ungu */
+            min-height: 100vh; /* warna bg bawah kotak hilang */
+        }
+
+        .container {
+            max-width: 1200px; /* lebar maksimal pada kontainer*/
+            margin: 0 auto; /* tengahin kontainer */
+            padding: 20px; /* jarak dalam kontainer */
+        }
+
+        .header { /* Header Section */
+            background: rgba(255, 255, 255, 0.95); /* warna bg putih transparan */
+            backdrop-filter: blur(10px); /* efek blur */
+            border-radius: 20px; /* sudut melengkung */
+            padding: 40px; /* jarak dalam header */
+            text-align: center; /* teks di tengah */
+            margin-bottom: 30px; /* jarak bawah header di bawah tulisan link github*/
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1); /* bayangan persegi panjang halus pada header section */
+        }
+
+        .profile-img {
+            width: 150px; /* lebar gambar profil */
+            height: 150px; /* tinggi gambar profil */
+            border-radius: 50%; /* membuat gambar menjadi bulat */
+            margin: 0 auto 20px auto; /* jarak bawah gambar profil */
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* warna gradasi gambar profil*/
+            display: flex; /* membuat gambar profil menjadi flex */
+            align-items: center; /* menengahkan isi gambar profil secara vertikal */
+            justify-content: center; /* menengahkan isi gambar profil secara horizontal */
+            font-size: 60px; /* ukuran font pada tek dalam gambar profil */
+            color: white; /* warna font pada teks dalam gambar profil */
+            font-weight: bold; /* membuat font pada teks dalam gambar profil menjadi tebal */
+        }
+
+        .header h1 {
+            
+            font-size: 2.5em; /* ukuran font Nama*/
+            margin-bottom: 10px; /* jarak bawah Nama */
+            color: #2c3e50; /* warna teks Nama */
+        }
+
+        .header p {
+            font-size: 2.5em; /* ukuran font Full Stack Developer & UI/UX Designer */
+            color: #7f8c8d; /* warna teks Full Stack Developer & UI/UX Designer */
+            margin-bottom: 20px; /* jarak bawah Full Stack Developer & UI/UX Designer */
+        }
+
+        .social-links {
+            display: flex; /* membuat link menjadi berjarak */
+            justify-content: center; /* menengahkan link  horizontal */
+            gap: 15px; /* jarak antar link  */
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 10px 20px; /* jarak dalam link */
+            background: linear-gradient(45deg, #667eea, #764ba2); /* warna gradasi link */
+            color: white; /* warna teks link */
+            text-decoration: none; /* menghilangkan garis bawah pada link */
+            border-radius: 25px; /* sudut melengkung pada link */
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px); /* efek hover link ke atas */
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid; /* membuat grid */
+            grid-template-columns: 1fr 1fr; /* dua kolom dengan lebar yang sama */
+            gap: 30px; /* jarak antar kolom */
+            margin-bottom: 30px; /* jarak bawah grid */
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95); /* warna bg putih transparan */
+            backdrop-filter: blur(10px); /* efek blur */
+            border-radius: 20px; /* sudut melengkung */
+            padding: 30px; /* jarak dalam card */
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1); /* bayangan persegi panjang halus pada card */
+        }
+
+        .card h2 {
+            color: #2c3e50; /* warna teks pada judul card */
+            margin-bottom: 20px; /* jarak bawah judul card */
+            font-size: 1.5em ;
+            border-bottom: 2px solid #667eaa; /* garis bawah pada judul card */
+            padding-bottom: 10px; /* jarak bawah garis bawah judul card */
+        }
+
+        .skill-item {
+            margin-bottom: 15px; /* jarak bawah setiap item skill */
+        }
+
+        .skill-name {
+            display: flex; /* membuat nama skill dan persentase skill menjadi berjarak */
+            justify-content: space-between; /* menengahkan nama skill dan persentase skill secara horizontal */
+            margin-bottom: 5px; /* jarak bawah nama skill */
+            font-weight: bold; /* membuat font pada teks nama skill menjadi tebal */
+        }
+
+        .skill-bar {
+            height: 10px; /* tinggi bar skill */
+            background: #ecf0f1; /* warna bg bar skill */
+            border-radius: 5px; /* sudut melengkung pada bar skill */
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%; /* tinggi bar skill progress */
+            background: linear-gradient(90deg, #667eea, #764ba2); /* warna gradasi bar skill progress */
+            border-radius: 5px; /* sudut melengkung pada bar skill progress */
+            transition: width 0.3s ease; /* efek transisi pada lebar bar skill progress */
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: rgba(255, 255, 255, 0.95); /* warna bg putih transparan */
+            backdrop-filter: blur(10px); /* efek blur */
+            border-radius: 20px; /* sudut melengkung */
+            padding: 30px; /* jarak dalam portfolio */
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1); /* bayangan persegi panjang halus pada portfolio section */
+        }
+
+        .portfolio h2 {
+            color: #2c3e50; /* warna teks pada judul portfolio */
+            margin-bottom: 20px; /* jarak bawah judul portfolio */
+            font-size: 1.5em ;
+            border-bottom: 2px solid #667eea; /* garis bawah pada judul portfolio */
+            padding-bottom: 10px; /* jarak bawah garis bawah judul portfolio */
+        }
+
+        .portfolio-grid {
+            display: grid; /* membuat grid */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* kolom responsif */
+            gap: 20px; /* jarak antar item portfolio */
+        }
+
+        .portfolio-item {
+            background: #f8f9fa; /* warna bg putih portfolio */
+            border-radius: 15px; /* sudut melengkung */
+            padding: 20px; /* jarak dalam item portfolio */
+            text-align: center; /* teks di tengah */
+            transition: transform 0.3s ease; /* efek transisi pada item portfolio */
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px); /* efek hover item portfolio ke atas */
+        }
+
+        .portfolio-item h3 {
+            color: #2c3e50; /* warna teks pada judul item portfolio */
+            margin-bottom: 10px; /* jarak bawah judul item portfolio */
+        }
+
+        .portfolio-item p {
+            color: #7f8c8d; /* warna teks pada deskripsi item portfolio */
+            font-size: 0.9em; /* ukuran font pada deskripsi item portfolio */
+        }
+
+        @media screen and (max-width: 1024x) {
+            .container {
+                padding: 15px; /* jarak dalam kontainer pada layar kecil */
+            }
+
+            .header { 
+                padding: 30px; /* jarak dalam header pada layar kecil */
+            }
+
+            .header h1 {
+                font-size: 2em; /* ukuran font Nama pada layar kecil */
+            }
+
+            .profile-img {
+                width: 120px; /* lebar gambar profil pada layar kecil */
+                height: 120px; /* tinggi gambar profil pada layar kecil */
+                font-size: 50px; /* ukuran font pada teks dalam gambar profil pada layar kecil */
+            }
+
+            .content-grid {
+                gap: 20px; /* jarak antar kolom pada grid pada layar kecil */
+            }
+
+            .card {
+                padding: 25px; /* jarak dalam card pada layar kecil */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 5px; /* jarak dalam kontainer pada layar sangat kecil */
+            }
+
+            .header {
+                padding: 15px; /* jarak dalam header pada layar sangat kecil */
+                margin-bottom: 20px; /* jarak bawah header pada layar sangat kecil */
+            }
+
+            .header h1 {
+                font-size: 1.5em; /* ukuran font Nama pada layar sangat kecil */
+            }
+
+            .profile-img {
+                width: 80px; /* lebar gambar profil pada layar sangat kecil */
+                height: 80px; /* tinggi gambar profil pada layar sangat kecil */
+                font-size: 30px; /* ukuran font pada teks dalam gambar profil pada layar sangat kecil */
+            }
+
+            .card, .portfolio {
+                padding: 15px;
+                border-radius: 15px;;
+            }
+
+            .card h2, .portofolio h2 {
+                font-size: 1.2em; /* ukuran font judul card pada layar sangat kecil */
+            }
+            
+            .social-links a {
+                padding: 8px 15px;;
+                font-size: 0.9em;
+            }
+
+            .skill-name {
+                font-size: 0.9em;
+            }
+
+            .portfolio-item {
+                padding: 15px;
+                
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px; /* jarak dalam kontainer pada layar sangat kecil */
+            }
+
+            .header {
+                padding: 20px; /* jarak dalam header pada layar sangat kecil */
+                margin-bottom: 20px; /* jarak bawah header pada layar sangat kecil */
+            }
+
+            .header h1 {
+                font-size: 1.8em; /* ukuran font Nama pada layar sangat kecil */
+            }
+
+            .header p {
+                font-size: 1em; /* ukuran font Full Stack Developer & UI/UX Designer pada layar sangat kecil */
+            }
+
+            .profile-img {
+                width: 100px; /* lebar gambar profil pada layar sangat kecil */
+                height: 100px; /* tinggi gambar profil pada layar sangat kecil */
+                font-size: 40px; /* ukuran font pada teks dalam gambar profil pada layar sangat kecil */
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links a {
+                width: 80%;
+                text-align: center;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr; /* satu kolom pada grid pada layar sangat kecil */
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h2 {
+                font-size: 1.3em; /* ukuran font judul card pada layar sangat kecil */
+            }
+
+            .portfolio {
+                padding: 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1 fr;
+                gap: 15px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ← Header Section → -->
+        <div class="header">
+            <div class="profile-img">FB</div>
+            <h1>Ilham Farizh Brevian</h1>
+            <p>Full Stack Developer & UI/UX Designer</p>
+            <div class="social-links">
+                <a href="#" onclick="alert('LinkedIn Profile')">LinkedIn</a>
+                <a href="#" onclick="alert('GitHub Profile')">GitHub </a>
+                <a href="#" onclick="alert('Email: john@example.com')">Email</a> 
+            </div>
+        </div>
+
+       <!-- ← Content grid → -->
+        <div class="content-grid">
+            <!-- ← About Section → -->
+            <div class="card">
+                <h2>Tentang Saya</h2>
+                <p>Saya adalah seorang Full Stack Developer dengan pengalaman 5+ tahun
+                dalam mengembangkan aplikasi web modern. Passionate tentang teknologi 
+                terbaru dan selalu eager untuk belajar hal-hal baru</p>
+                <br>
+                <p>Spesialisasi dalam react, Node.js, dan desain UI/UX yang user-friendly.
+                    Suka bekerja dalam tim dan menghadapi tentang teknis yang kompleks.</p>
+            </div>
+    
+
+            <!-- ← Skills Section → -->
+            <div class="card">
+                <h2>Keahlian</h2>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>JavaScript </span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>React</span>
+                        <span>85% </span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div> 
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Node.js</span> 
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                       <div class="skill-progress" style="width: 80%"></div> 
+                    </div> 
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>UI/UX Design</span> 
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- ← Porto Section → -->
+        <div class="portfolio">
+            <h2>Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>E-Commerce App</h3>
+                    <p>Aplikasi e-commerce lengkap dengan payment gateway dan admin dashboard. Menggunakan React dan Node.js.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Task Management </h3>
+                    <p>Aplikasi manajemen tugas real-time dengan fitur kolaborasi tim. Built dengan React dan Socket.io. </p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Portfolio Website</h3>
+                    <p>Website portfolio responsif dengan animasi modern dan design yang clean. HTML, CSS, dan JavaScript.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate skill bars on load
+            const skillBars = document.querySelectorAll('.skill-progress'); 
+            skillBars.forEach(bar => {
+                const width = bar.style.width; 
+                bar.style.width = '0%';
+                setTimeout(( ) => {
+                    bar.style.width =  width;
+                }, 500);
+            });
+
+            // Add click effect to portfolio items
+            const portfolioItems = document.querySelectorAll('.portfolio-item'); 
+            portfolioItems.forEach (item => {
+                item.addEventListener('click', function() { 
+                    this.style.transform = 'scale(0.95)'; 
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-5px)';
+                    }, 150);
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
